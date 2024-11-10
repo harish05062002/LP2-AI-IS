@@ -1,0 +1,51 @@
+import math
+print("Enter two prime no:")
+p=int(input("1st prime no:"))
+q=int(input("2st prime no:"))
+def prime_check(a):
+    if(a==2):
+        return True
+    elif(a>2 and a%2==0):
+        return False
+    elif(a>2):
+        for i in range(2,a):
+            if((a%i)==0):
+                return False
+            else:
+                return True
+checkp=prime_check(p)
+checkq=prime_check(q)
+while(checkp==False)or(checkq==False):
+    p=int(input("1st prime no:"))
+    q=int(input("2st prime no:"))
+    checkp=prime_check(p)
+    checkq=prime_check(q)
+n=p*q
+print("n=",n)
+phi=(p-1)*(q-1)
+print("phi(n)",phi)
+e=2
+while(e<phi):
+    if(math.gcd(e,phi)==1):
+        break
+    else:
+        e=e+1
+    print("e:",e)
+        
+j=0
+while True:
+    if(j*e)%phi==1:
+        d=j
+        break
+    j+=1
+print("d:",d)
+
+msg=int(input("Enter Message"))
+cipher=(msg**e)%n
+print("Encrypted code:",cipher)
+plain=(cipher**e)%n
+print("Decrypted code:",plain)
+
+
+
+                
